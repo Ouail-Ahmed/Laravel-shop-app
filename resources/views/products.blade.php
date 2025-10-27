@@ -1,4 +1,21 @@
 <x-layout>
-        <x-slot name="header">Products: All Available Items</x-slot>
-        <h1>Our Story: Fresh from Farm to Table.</h1>
+    <x-slot name="header">Our Fresh Produce</x-slot>
+
+    <ul class="divide-y divide-gray-200">
+        @foreach ($produce as $item)
+            <li class="py-4 flex justify-between items-center">
+                <div>
+                    <a href="/product/{{ $item['id'] }}" class="text-blue-500 hover:underline">
+                        <span class="text-lg font-semibold">{{ $item['name'] }}</span>
+                    </a>
+                    <strong class="text-green-600">${{ $item['price'] }}</strong>
+                </div>
+                @if ($item['in_stock'])
+                    <span class="text-xs font-medium text-green-500">In Stock</span>
+                @else
+                    <span class="text-xs font-medium text-red-500">Out of Stock</span>
+                @endif
+            </li>
+        @endforeach
+    </ul>
 </x-layout>
