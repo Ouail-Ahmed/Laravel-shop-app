@@ -2,23 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 
-class Product
+class Product extends Model
 {
-    public static function all(): array
+    use HasFactory;
+    public function supplier()
     {
-        return [
-            ['id' => 1, 'name' => 'Sweet Potato', 'price' => 2.99, 'in_stock' => true, 'description' => 'Great for roasting!'],
-            ['id' => 2, 'name' => 'Granny Smith Apple', 'price' => 1.50, 'in_stock' => true, 'description' => 'Perfectly tart and crisp.'],
-            ['id' => 3, 'name' => 'Fresh Herbs Bundle', 'price' => 4.50, 'in_stock' => false, 'description' => 'A mix of basil, thyme, and rosemary.']
-        ];
+        return $this->belongsTo(Supplier::class);
     }
-    public static function find(int $id): array
+    public function tags()
     {
-        $product = Arr::first(self::all(), fn($p) => $p['id'] == $id);
-
-        return $product;
+        return $this->belongsToMany(Tag::class);
     }
 }
