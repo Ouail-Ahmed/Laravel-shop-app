@@ -12,9 +12,9 @@ Route::get('/', function () {
 });
 
 Route::get('/products', function () {
-    return view('products', ['produce' => Product::all()],);
+    return view('products', ['produce' => Product::with('supplier')->cursorPaginate(5)],);
 });
-Route::get('/product/{id}', function ($id) {
+Route::get('/produce/{id}', function ($id) {
 
     //  Use the Collection helper to find the item by its ID
     $item = Product::find($id);

@@ -9,7 +9,7 @@
                         <span class="text-lg font-semibold">{{ $item->name }}</span>
                     </a>
                     <strong class="text-green-600">${{ $item->price }}</strong>
-                    <p class="text-sm text-gray-600">From: {{ $item->suppliers }}</p>
+                    <p class="text-sm text-gray-600">From: {{ $item->supplier->name }}</p>
                 </div>
                 @if ($item->in_stock)
                     <span class="text-xs font-medium text-green-500">In Stock</span>
@@ -19,4 +19,6 @@
             </li>
         @endforeach
     </ul>
+
+    {{ $produce->links() }}
 </x-layout>
