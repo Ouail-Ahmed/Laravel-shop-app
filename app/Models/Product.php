@@ -9,6 +9,9 @@ use Illuminate\Support\Arr;
 class Product extends Model
 {
     use HasFactory;
+    protected $guarded = [
+        'id'
+    ];
     public function supplier()
     {
         return $this->belongsTo(Supplier::class);
