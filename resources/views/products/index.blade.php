@@ -5,7 +5,7 @@
         @foreach ($produce as $item)
             <li class="py-4 flex justify-between items-center">
                 <div>
-                    <a href="/produce/{{ $item->id }}" class="text-blue-500 hover:underline">
+                    <a href="/products/{{ $item->id }}" class="text-blue-500 hover:underline">
                         <span class="text-lg font-semibold">{{ $item->name }}</span>
                     </a>
                     <strong class="text-green-600">${{ $item->price }}</strong>

@@ -1,5 +1,6 @@
+{{-- resources/views/products/edit.blade.php --}}
 <x-layout>
-    <form method="POST" action="/product/{{ $product->id }}">
+    <form method="POST" action="/products/{{ $product->id }}">
         @csrf
         @method('PATCH')
         <div>
@@ -56,12 +57,11 @@
                 class="w-full rounded-md bg-green-600 px-4 py-2 text-sm mt-4 font-semibold text-white hover:bg-green-700 transition">Update
                 Product</button>
         </div>
-        <form method="POST" action="/products/{{ $product->id }}">
-            @csrf
-            @method('DELETE')
-            <button
-                class="w-full rounded-md bg-red-500 px-4 py-2 font-bold text-white text-sm mt-4 hover:bg-red-700 transition-colors">Delete</button>
-        </form>
-
+    </form>
+    <form method="POST" action="/products/{{ $product->id }}">
+        @csrf
+        @method('DELETE')
+        <button
+            class="w-full rounded-md bg-red-500 px-4 py-2 font-bold text-white text-sm mt-4 hover:bg-red-700 transition-colors">Delete</button>
     </form>
 </x-layout>
